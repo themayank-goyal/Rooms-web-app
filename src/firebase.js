@@ -93,6 +93,9 @@ export const myOnAuthStateChanged = (setUser, navigate) => {
     if (user) {
       setUser(user);
       navigate('/rooms');
+    } else {
+      setUser();
+      navigate('/login');
     }
   });
 };
@@ -132,9 +135,12 @@ export const getAllRooms = async (setAllRooms) => {
   }
 };
 
-export const getUserJoinedRooms = async(username) => {
+export const getUserJoinedRooms = async(username, setJoinedRooms) => {
   const docRef = doc(db, 'users', username);
-  onSnapshot(docRef, (doc) => console.log(doc.data()));
+
+  onSnapshot(docRef, (doc) => {
+    setJoinedRooms(doc.data().rooms)
+  });
 }
 
 export const joinRoom = async (username, roomcode) => {

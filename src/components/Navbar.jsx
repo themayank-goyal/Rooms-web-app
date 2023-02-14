@@ -29,21 +29,48 @@ const Navbar = () => {
       navigate('/');
     }
   };
-
+  console.log(userPhoto);
   useEffect(() => {
     myOnAuthStateChanged(setUser, navigate);
   }, [username]);
   return (
-    <div className='flex sm:flex-col sm:justify-start sm:w-1/4 p-4  justify-between text-white bg-purple-700'>
-      <Link className='brder-2 pl-4 font-bold  sm:text-2xl uppercase text-zinc-900 sm:mb-8' to='/'>Rooms</Link>
-      {username?
-      <div className='brder-2 pl-4 flex gap-2 sm:gap-5 text-sm sm:text-lg sm:flex-col'>
-        <Link to='/rooms'>All Rooms</Link>
-        <Link to='/create-room'>Construct Room</Link>
-        <Link to='/myrooms'>My Rooms</Link>
-        <button className='w-fit mt-8 border-2 rounded-lg p-4 hover:bg-zinc-800 duration-300' onClick={handleAuth}>Sign out</button>
-      </div> : <></>
-      }
+    <div className='flex items-center sm:flex-col sm:items-start sm:justify-start sm:w-1/4 p-4  justify-between text-white bg-purple-700'>
+      <Link
+        className='pl-4 font-bold hidden sm:block  sm:text-2xl uppercase text-zinc-900 sm:mb-8'
+        to='/'
+      >
+        Rooms
+      </Link>
+      {username ? (
+        <div className='pl-4 flex items-center
+         ml-auto sm:ml-0 gap-2 sm:items-start sm:gap-5 text-sm sm:text-lg sm:flex-col'>
+          <Link to='/rooms'>All Rooms</Link>
+          <Link to='/create-room'>Construct Room</Link>
+          <Link to='/myrooms'>My Rooms</Link>
+          <div className='dropdown dropdown-bottom w-full'>
+            <img
+              tabIndex={0}
+              className='rounded-full w-12'
+              src={userPhoto}
+              alt={username}
+            />
+            <button
+              className='dropdown-content  border-none rounded-lg p-4 bg-zinc-700 hover:bg-zinc-800 duration-300'
+              onClick={() => handleAuth(setUser, username)}
+            >
+              Sign out
+            </button>
+            {/* </ul> */}
+          </div>
+        </div>
+      ) : (
+        <button
+          onClick={() => handleAuth(setUser, username)}
+          className='p-2 text-white bg-zinc-800 rounded-lg border-2 shadow-xl border-none  hover:duration-300  active:translate-y-1 active:shadow-none'
+        >
+          Login now
+        </button>
+      )}
     </div>
   );
 };

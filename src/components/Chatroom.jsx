@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addMessages, getMessages, handleAuth } from '../firebase';
+import { addMessages, getMessages, getUserJoinedRooms, handleAuth } from '../firebase';
 import Message from './Message';
 import { useSelector } from 'react-redux';
 import { selectUserEmail, selectUserName } from '../features/user/userSlice';

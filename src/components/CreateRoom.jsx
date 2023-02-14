@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, useState } from 'react';
 import { createRoom } from '../firebase';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateRoom = () => {
   const [roomDetails, setRoomDetails] = useState({});
@@ -32,9 +32,9 @@ const CreateRoom = () => {
     e.preventDefault();
     console.log();
     const isCreated = await createRoom(room);
-    // isCreated
-    //   ? toast.success('Room Created 🎉')
-    //   : toast.error("don't be sad try again");
+    isCreated
+      ? toast.success('Room Created 🎉')
+      : toast.error("don't be sad try again");
   };
   const handleRoomCode = (e) => {
     dispatch({
@@ -56,30 +56,38 @@ const CreateRoom = () => {
   });
   return (
     <div className='w-full'>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <div className='flex flex-col gap-4 mx-auto w-fit mt-10 mb-6'>
         <h1 className='text-xl font-bold'>Create a new Room</h1>
-        <form action=''>
-          <label htmlFor='room_name'>suggest a name</label>
-          <input
-            value={room.name}
-            onChange={handleRoomName}
-            className='p-4 rounded-md outline-none border-2 visited:border-red-500'
-            type='text'
-            placeholder='suggest a name for the room...'
-            name=''
-            id='room_name'
-          />
-          <label htmlFor='room_code'>Room Code</label>
-          <input
-            value={room.roomcode}
-            onChange={handleRoomCode}
-            className='p-4 rounded-md outline-none border-2 visited:border-red-500'
-            type='text'
-            placeholder='suggest a name for the room...'
-            name=''
-            id='room_code'
-          />
+        <form className='flex flex-col gap-4' action=''>
+          <div className='flex flex-col'>
+            <label className='font-semibold mb-2' htmlFor='room_name'>
+              suggest a name
+            </label>
+            <input
+              value={room.name}
+              onChange={handleRoomName}
+              className='border-2  p-4 rounded-md outline-none'
+              type='text'
+              placeholder='Room name'
+              name=''
+              id='room_name'
+            />
+          </div>
+          <div className='flex flex-col'>
+            <label className='font-semibold mb-2' htmlFor='room_code'>
+              Room Code
+            </label>
+            <input
+              value={room.roomcode}
+              onChange={handleRoomCode}
+              className='p-4 rounded-md outline-none border-2 visited:border-red-500'
+              type='text'
+              placeholder='Unique Room Code'
+              name=''
+              id='room_code'
+            />
+          </div>
           <button
             type='submit'
             onClick={handleCreateRoom}
