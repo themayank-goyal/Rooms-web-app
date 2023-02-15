@@ -14,14 +14,14 @@ const Rooms = () => {
   const [joinedRooms, setJoinedRooms] = useState([]);
   const email = useSelector(selectUserEmail);
   const username = email?.split('@')[0];
-
+  console.log(email , username);
   useEffect(() => {
     getAllRooms(setAllRooms);
   }, []);
 
   useEffect(() => {
     getUserJoinedRooms(username, setJoinedRooms);
-  }, []);
+  }, [username]);
 
   console.log(joinedRooms);
 

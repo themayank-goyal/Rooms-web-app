@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { addMessages, getMessages, getUserJoinedRooms, handleAuth } from '../firebase';
+import {
+  addMessages,
+  getMessages,
+  getUserJoinedRooms,
+  handleAuth,
+} from '../firebase';
 import Message from './Message';
 import { useSelector } from 'react-redux';
 import { selectUserEmail, selectUserName } from '../features/user/userSlice';
@@ -18,14 +23,21 @@ const Chatroom = () => {
     setInput('');
   };
   useEffect(() => {
+    const chatbox = document.querySelector('#chatbox');
+    console.log(chatbox);
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }, [messages]);
+  useEffect(() => {
     getMessages(setMessages, roomcode);
   }, []);
-  
-  console.log(messages);
+
+  // console.log(messages);
   return (
     <div className='flex flex-col w-full bg-gradient-to-tl from-fuchsia-200 via-fuchsia-400 to-violet-400'>
-      <h1 className='text-2xl border-b-2 border-white text-yellow-900 uppercase font-bold p-4 '>WELCOME {name}</h1>
-      <div className='relative  rounded-lg h-screen p-3 overflow-y-auto'>
+      <h1 className='text-2xl border-b-2 border-white text-yellow-900 uppercase font-bold p-4 '>
+        WELCOME {name}
+      </h1>
+      <div id='chatbox' className='relative  rounded-lg h-screen p-3 overflow-y-auto'>
         {messages?.map((message, i) => (
           <Message key={i} message={message} username={username} />
         ))}
