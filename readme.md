@@ -16,12 +16,13 @@ based on the group of people having same interest.
 
 ## Tech stack used
 
+<div style='display: flex; column-gap: 1rem'>
 <img style='width: 64px;height: 64px ;object-fit: contain;' src='./src/assets/react.svg'/> 
 <img style='width: 64px;height: 64px ;object-fit: contain;' src='https://th.bing.com/th/id/OIP.SBX0VJhOOpZbcd3Rj45fHgHaHa?w=154&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'/> 
 <img style='width: 64px;height: 64px ;object-fit: contain;' src='https://th.bing.com/th/id/OIP.o7c7ftXCLdQDsfE9NkWCvwHaGb?w=168&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'/> 
 <img style='width: 64px;height: 64px ;object-fit: contain;' src='https://th.bing.com/th/id/OIP.F24Hpc1CvAdlBi0W7qJMSAAAAA?w=169&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'/> 
 <img style='width: 64px;height: 64px ;object-fit: contain;' src='https://th.bing.com/th/id/OIP.FCKUS9DiRT1qJYj37jBebAEgDY?w=219&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'/> 
-
+</div>
 
 ## Demo
 
